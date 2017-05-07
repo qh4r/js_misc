@@ -1,0 +1,15 @@
+{
+  "name": "scss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass -w=src/style.scss -o=styles src/style.scss --source-map=styles"
+  },
+  "author": "qh4r",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.5.2"
+  }
+}

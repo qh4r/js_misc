@@ -1,0 +1,12 @@
+@import "res/colors";
+
+div {
+  h2 {
+    border: {
+      style: solid;
+      color: $blue;
+      width: 2px;
+      radius: 4px
+    };
+  }
+}
