@@ -1,7 +1,33 @@
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto; }
+
 div h2 {
+  text-align: center;
   border-style: solid;
   border-color: #4879ff;
   border-width: 2px;
   border-radius: 4px; }
+
+.bear {
+  padding: 1rem 2rem;
+  margin: auto; }
+  .bear-container .bear {
+    margin: auto;
+    transition: transform 1s ease-in-out; }
+  .bear-container {
+    background-color: #e1e9ff;
+    margin: 0 auto; }
+  .bear-container:hover .bear {
+    transform: rotate(180deg); }
+  .bear::before {
+    display: block;
+    content: url("https://en.wikipedia.org/wiki/Care_Bears"); }
+  img.bear-img {
+    margin: auto;
+    transition: transform 1s ease-in-out; }
+    img.bear-img:hover {
+      transform: rotate(540deg); }
 
 /*# sourceMappingURL=style.css.map */

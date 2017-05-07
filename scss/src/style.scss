@@ -1,12 +1,71 @@
 @import "res/colors";
 
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 div {
   h2 {
+    text-align: center;
     border: {
       style: solid;
       color: $blue;
       width: 2px;
       radius: 4px
-    };
+    }
+  ;
   }
+}
+
+.bear {
+  padding: 1rem 2rem;
+  margin: auto;
+
+  &-container & {
+    margin: auto;
+    transition: transform 1s ease-in-out;
+  }
+
+  &-container {
+    background-color: lighten($blue, 30%);
+    margin: 0 auto;
+  }
+
+  // & - zawsze oznacza rodzica czyli w tym wypadku .bear -> .bear-container:hover bear
+  &-container:hover & {
+    transform: rotate(180deg);
+  }
+
+  &::before {
+    display: block;
+    content: url("https://en.wikipedia.org/wiki/Care_Bears");
+  }
+
+  //@at-root to specjalna ddyrektywa ktora sprawia ze mozliwe jest dodanie rodzica(&) po tagu elementu.
+  // wynik to img.bear , bez at-root img& powodowalo by blad kompilacji
+  @at-root {
+    img#{&}-img {
+      margin: auto;
+
+      transition: transform 1s ease-in-out;
+      // img to domyslnie inline-block element wiec by byl wysrodkowany trza y dodac display bloc, ale bez tego jest ciekawiej
+      //display: block;
+      //margin: auto;
+      &:hover {
+        transform: rotate(540deg);
+      }
+    }
+  }
+
+  //img {
+  //  transition: transform 1s ease-in-out;
+  //  // img to domyslnie inline-block element wiec by byl wysrodkowany trza y dodac display bloc, ale bez tego jest ciekawiej
+  //  //display: block;
+  //  //margin: auto;
+  //  &:hover {
+  //    transform: rotate(540deg);
+  //  }
+  //}
 }
