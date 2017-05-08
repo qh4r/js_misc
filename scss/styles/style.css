@@ -1,3 +1,8 @@
+.sunshine-container {
+  background-image: linear-gradient(#eeb879, #50b879); }
+  .sunshine-container:hover {
+    background-image: linear-gradient(#f8968f, #b8508f); }
+
 .container {
   width: 80%;
   max-width: 1200px;
@@ -13,6 +18,11 @@ div h2 {
 .bear {
   padding: 1rem 2rem;
   margin: auto; }
+  .bear .container-test {
+    background-color: #ff232a; }
+  .bear-container::after {
+    display: block;
+    content: "test"; }
   .bear-container .bear {
     margin: auto;
     transition: transform 1s ease-in-out; }
@@ -23,7 +33,7 @@ div h2 {
     transform: rotate(180deg); }
   .bear::before {
     display: block;
-    content: url("https://en.wikipedia.org/wiki/Care_Bears"); }
+    content: "https://en.wikipedia.org/wiki/Care_Bears"; }
   img.bear-img {
     margin: auto;
     transition: transform 1s ease-in-out; }

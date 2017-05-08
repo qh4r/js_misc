@@ -1,5 +1,6 @@
 @import "res/colors";
-
+@import "sunshine";
+// da sie laczyc pliki sass i scss
 .container {
   width: 80%;
   max-width: 1200px;
@@ -20,16 +21,29 @@ div {
 }
 
 .bear {
+  $blue: lighten($blue, 30%); // zmienne maja scope w elemencie w ktorym sa utworzone i przesłaniają sie
+  $text: "test";
+
   padding: 1rem 2rem;
   margin: auto;
 
+  .container-#{$text} {
+    background-color: $red;
+  }
+
+  @at-root { // at root wyciaga wynik do roota
+    #{&}-container::after {  // dzieki temu dostajemy .bear-container zamiast .bear .bear-container
+      display: block;
+      content: $text;
+    }
+  }
   &-container & {
     margin: auto;
     transition: transform 1s ease-in-out;
   }
 
   &-container {
-    background-color: lighten($blue, 30%);
+    background-color: $blue;
     margin: 0 auto;
   }
 
@@ -40,7 +54,7 @@ div {
 
   &::before {
     display: block;
-    content: url("https://en.wikipedia.org/wiki/Care_Bears");
+    content: "https://en.wikipedia.org/wiki/Care_Bears";
   }
 
   //@at-root to specjalna ddyrektywa ktora sprawia ze mozliwe jest dodanie rodzica(&) po tagu elementu.
