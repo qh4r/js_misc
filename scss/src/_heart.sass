@@ -1,0 +1,10 @@
+@import "./res/colors"
+@import "common"
+// funkcje sass
+//http://sass-lang.com/documentation/Sass/Script/Functions.html
+div.heart
+  &-container
+    @include max-width-req($max-width: 800px)
+      text-align: center // content dodajemy w klasie (w scssie w klamrach)
+    @include character($border: mix($yellow, $red, 40%)) // uzywajac nazwanych argumentow mozna unikac przekazania do wystepujacych przed tym ktory chcemy wypelnic
+// tutaj kolor bedzie domyslny

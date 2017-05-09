@@ -1,0 +1,24 @@
+@mixin character($base-color: mix(#000FFF, #FFF000), $border: #F00FF0) // mozna przekazywac parametry domyslne
+
+  // kolory i procent ich uzycia - domyslnie 50% oba
+  //scale przyjmuje wartosci $color, [$red], [$green], [$blue], [$saturation], [$lightness], [$alpha]
+  background-image: linear-gradient(scale-color($base-color, $red: 90%), $base-color)
+  border:
+    radius: 4px
+    width: 2px
+    style: solid
+    color: $border
+  &:hover
+    $bg-complement: complement($base-color)
+    // complement zwraca doplenienie
+    background-image: linear-gradient(scale-color($bg-complement, $red: 90%, $green: 40%), $bg-complement)
+
+
+  // mozliwe jest dodanie parametru rest ktory bedzie przyjmowal dowolne style (color, padding) $rest...
+@mixin max-width-req($max-width)
+  box-sizing: border-box
+  @media (max-width: $max-width)
+    max-width: 50%
+    @content // mozna przekazac dowolna dodatkowa zawartosc do tego mixinu
+    img
+      transform: scale(0.5, 0.5) translate(-50%)

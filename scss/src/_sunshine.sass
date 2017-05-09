@@ -1,15 +1,8 @@
 @import "./res/colors"
-
+@import "common"
 // funkcje sass
 //http://sass-lang.com/documentation/Sass/Script/Functions.html
-.sunshine
-
+div.sunshine
   &-container
-    $bg-color: mix($blue, $green, 40%)
-    // kolory i procent ich uzycia - domyslnie 50% oba
-    //scale przyjmuje wartosci $color, [$red], [$green], [$blue], [$saturation], [$lightness], [$alpha]
-    background-image: linear-gradient(scale-color($bg-color, $red: 90%), $bg-color)
-    &:hover
-      $bg-complement: complement($bg-color)
-      // complement zwraca doplenienie
-      background-image: linear-gradient(scale-color($bg-complement, $red: 90%, $green: 40%), $bg-complement)
+    @include max-width-req($max-width: 800px)
+    @include character(mix($blue, $green, 40%))
