@@ -1,7 +1,15 @@
 @import res/colors
 
+// funkcja musi byc zadeklarowana przed jej uzyciem
+@function compute-background($step)
+  $current: $step*2 // zmienne w funkcji nie sa widoczne na zewnatrz i nie moga modyfikowac wartosci zewnetrznych (brak side effectow)
+  @debug $current // debug wypisuje wartosci w czasie kompilacji
+  @return 10+$current // funkcja MUSI zwracac wartosc
+
+// funkcje moga miec domyslne wartosci
+
 @for $i from 1 to 10
-  $value: 10+($i*2)
+  $value: compute-background($i)
   .f#{$value}
     font-size: #{$value}px
     font-weight: if($value > 18, 300, 700) // if dziala jak ? :
@@ -22,6 +30,7 @@
   @each $limit, $width in $width-map
     @media (min-width: $limit)
       @each $bear in $bears
+        @debug $bear, $limit, $width // debug wypisuje wartosci w czasie kompilacji
         .#{$bear}-bear-bg
           background:
             image: url("../img/carebear_#{$bear}.png")
