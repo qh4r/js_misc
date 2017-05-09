@@ -1,0 +1,37 @@
+@import res/colors
+
+@for $i from 1 to 10
+  $value: 10+($i*2)
+  .f#{$value}
+    font-size: #{$value}px
+    font-weight: if($value > 18, 300, 700) // if dziala jak ? :
+
+@mixin hues($name, $color, $step)
+  $computed-color: lighten($color, $step * 2.5%)
+  #{name}-#{step}
+    color: $computed-color
+
+@for $i from 0 to 10
+  @include hues("redish", $red, $i)
+  @include hues("grinish", $green, $i)
+  @include hues("bluish", $blue, $i)
+
+.container
+  $bears: cloud, heart, rainbow, sunshine
+  $width-map: (800px: 100%, 1200px: 50%, 1600px: 25%) //mapa musi byc w nawaisach
+  @each $limit, $width in $width-map
+    @media (min-width: $limit)
+      @each $bear in $bears
+        .#{$bear}-bear-bg
+          background:
+            image: url("../img/carebear_#{$bear}.png")
+            size: contain
+            repeat: no-repeat
+            position: center
+          box-sizing: border-box
+          width: $width
+          height: 200px
+
+          // mapy moga tez uzywac map-get($mapa, $klucz) do pobierania wartosci, klucze moga byc wspoldzielone przez mapy
+          // mapa moze miec wiecej wartosci niz 1 -> (sunshine, 23px, black), (cloud, 45px, blue)
+          // #nth{index} - pozwala odnosic sie po indexie

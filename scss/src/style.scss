@@ -1,6 +1,7 @@
 @import "res/colors";
 @import "sunshine";
 @import "heart";
+@import "utlis";
 // da sie laczyc pliki sass i scss
 .container {
   width: 80%;
@@ -29,12 +30,26 @@ div {
   }
 }
 
+.margin-auto { //klasa do extendow
+  //&-using-selector {
+  //  margin: auto;
+  //}
+  // & NIE ZADZIALA NA KLASY DZIEDZICZACE tylko na ta klase - trzbea uwaac
+  margin: auto;
+  .test {
+    background-color: #50b879;
+    div {
+      text-decoration: dashed;
+    }
+  } // klasy extendowane zachowaja w sobie utworzone w kalsie matce drzewo zależności
+}
+
 .bear {
   $blue: lighten($blue, 30%); // zmienne maja scope w elemencie w ktorym sa utworzone i przesłaniają sie
   $text: "test";
 
   padding: 1rem 2rem;
-  margin: auto;
+  @extend .margin-auto;
 
   .container-#{$text} {
     background-color: $red;
@@ -47,13 +62,13 @@ div {
     }
   }
   &-container & {
-    margin: auto;
+    @extend .margin-auto;
     transition: transform 1s ease-in-out;
   }
 
   &-container {
     background-color: $blue;
-    margin: 0 auto;
+    @extend .margin-auto;
   }
 
   // & - zawsze oznacza rodzica czyli w tym wypadku .bear -> .bear-container:hover bear

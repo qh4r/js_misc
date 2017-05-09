@@ -2,7 +2,22 @@
 @import "common"
 // funkcje sass
 //http://sass-lang.com/documentation/Sass/Script/Functions.html
-div.sunshine
+.sunshine
+  $parent: &
   &-container
     @include max-width-req($max-width: 800px)
+      #{$parent}-img // wykorzystanie parenta z poziomu wyzej
+        border-style: none
+        background: transparent
     @include character(mix($blue, $green, 40%))
+    text-align: center
+    img
+      transition: border-radius 1s ease-in-out
+      background: $red
+      border:
+        style: solid
+        radius: 25%
+        color: $red
+        width: 5px
+      &:hover
+        border-radius: 60%
